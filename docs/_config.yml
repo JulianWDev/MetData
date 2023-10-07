@@ -22,8 +22,8 @@ title: Metropolitan Data Assignment
 email: julian.fitzpatrick@wur.nl
 description: >- # this means to ignore newlines until "baseurl:"
   This is the website for our Assignment groups for the course Metropolitan Data 1 at AMS Institute. Made by Carlotta, Camille, Lora, and Julian.
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://julianwdev.github.io/MetData/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/docs" # the subpath of your site, e.g. /blog
+url: "https://julianwdev.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  JulianWDev
 
 # Build settings
