@@ -18,16 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
+title: Metropolitan Data Assignment
+email: julian.fitzpatrick@wur.nl
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+  This is the website for our Assignment groups for the course Metropolitan Data 1 at AMS Institute. Made by Carlotta, Camille, Lora, and Julian.
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://julianwdev.github.io/MetData/" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  JulianWDev
 
 # Build settings
 remote_theme: pages-themes/minimal@v0.2.0
