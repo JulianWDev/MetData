@@ -2,4 +2,8 @@
 ---
 
 @import "{{ site.theme }}";
-text-align: justify;
+
+p {
+    text-align: justify;
+    text-justify: inter-word
+}
