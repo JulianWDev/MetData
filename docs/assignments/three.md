@@ -22,4 +22,10 @@ figure = px.bar(df_neighbourhood, x='neighbourhood', y='count')
 figure.show()
 ```
 ![neighbourhood_plot](./neighbourhood_plot.png)
-First, we read the airbnb dataset which we downloaded from the airbnb scraper website. Then, we use `value_counts` to 
+First, we read the airbnb dataset which we downloaded from the airbnb scraper website. Then, we use `value_counts` to create a new dataframe that contains the count of each occurance of a specific neighbourhood. We plot this new dataframe in a histogram using plotly express.
+
+### Which street in Amsterdam has the most AirBnB apartments?
+We were unable to complete this assignment, because it required reverse geocoding which is a paid service. Using google maps API, it would have costed about 40$. Free solutions were inadequate, because they disallow bulk API requests.
+
+### Try to cross reference the data from the AirBnB dataset with the BBGA. Can you figure out if all apartments of AirBnB are designated as housing? Which number of apartments are not rented out all the time but are also used as normal housing?
+First, we
