@@ -4,17 +4,15 @@ title: Assignment 1 - Water
 author: Carlotta, Camille, Lora, and Julian
 ---
 
-When considering data sources available on water quality and traffic in Amsterdam it's hard to find holistic and detailed data sets online. However, for this assignment we have considered a combination potential data sets available and other sources for information that could be combined to a more complete image. We will first discuss datasets on marine traffic and then go over the possibilities for water quality in Amsterdam. 
+When considering data sources available on water quality and traffic in Amsterdam it's hard to find holistic and detailed data sets online. However, for this assignment we have considered a combination potential data sets available and other sources for information that could be combined to create a somewhat complete image, orat least a sufficient image to pick a route. We will first discuss potential datasets on marine traffic and then go over the possibilities for water quality, or quality approximations in Amsterdam. 
 
 ### Datasets for marine traffic 
 
-When considering the need to not interfere with water transport we haven’t found easily accessible raw data. However, we have found a pdf map which shows no go zones in pink (Sloepdelen.nl, n.d.). We can’t subtract specific data from this map. Furthermore, via the marine traffic website we can find the main traffic routes all over the world (MarineTraffic, n.d. ). This includes frequently used routes in Amsterdam. Through a scraper tool one could also over time derive all of the data through time which would allow a more detail consideration for the event managers to consider. Neither of these data sources are directly usable in python in their current format. 
+When considering the need to not interfere with water transport we haven’t found much accesible raw data which can be used in python. However, we have found a pdf map which shows no go zones with a red sign and restricted areas for boat transport in pink (Sloepdelen.nl, n.d.). The IJ is restricted liekly due to the passage of large freigh traffic so we want to avoide that, but other restricted areas might actually be interesting for us since they will have less boat traffic.
 
-<<<<<<< HEAD
-Concerning the canals routes, a google maps user made a list of the four canal routes someone should take if they are about to visit Amsterdam (Amsterdam Canal Routes - Google my maps, n.d.). This list recommends tourists what routes they should take if they are renting a boat for the day. It is fair to assume that touristic canals use the same routes. As the list is made on google maps, it is possible to extract these data and import them on python. The file type is kml, but we found an online converter that could create a geojson file out of a kml file.
-=======
+We can’t subtract specific data from this map. Furthermore, via the marine traffic website we can find the main traffic routes all over the world (MarineTraffic, n.d. ). This includes frequently used routes in Amsterdam. Through a scraper tool one could also over time derive all of the data through time which would allow a more detail consideration for the event managers to consider. Neither of these data sources are directly usable in python in their current format. 
+
 Concerning the canals routes, a google maps user made a list of the four canal routes someone should take if they are about to visit Amsterdam. [Google maps link.](https://www.google.com/maps/d/viewer?mid=1-isVe-eoiAiJj18lnT3cmeoLnbw&hl=en_US&ll=52.375187000000004%2C4.8828430000000145&z=15 ) This list recommends tourists what routes they should take if they are renting a boat for the day. It is fair to assume that touristic canals use the same routes. As the list is made on google maps, it is possible to extract these data and import them on python.  
->>>>>>> b1031d1b9ce899c8424074e11b0bd124ab868db3
 
 ### Datasets for water quality  
 
