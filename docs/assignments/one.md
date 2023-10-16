@@ -20,18 +20,53 @@ For this assignment we looced for data we could directly use for coding, even if
 
 However, to consider feasibility of the event the main focus point is water quality. There are several different monitoring points in Amsterdam. However, the data is predominantly available seperatly in different websites specific to that area, thus we would have to pull it togetehr to one holistic data set manually or through a scraper (Gemeente Amsterdam, 2023). Similarly, Waternet has a map which shows the oxygen and salt level in the canals of Amsterdam (Van Roekel, 2022).  Again, this map is not downloadable and thus the information would have to be manually entered. Morover the latter information is less relevant to the concern of qater quality which predominantly focuses on the precense of E. Coli and blue algea.  
 
-In research we found that the E. Coli bacteria mainly determines whether water quality is good enough, but we didn't find datasets on E.Coli concentrations (Van den Tillaart, 2022). For the sake of this exercise, we have focused on creating proximiations for water quality through downloadable datasets and while they might not give a perfect image of areas in Amsterdam with clean water we think they work as an approximation. Clean water areas in combination with the water quality of the ground water in certain other areas might give some idea of the better swimming locations. 
-
-  
+In research we found that the E. Coli bacteria mainly determines whether water quality is good enough, but we didn't find datasets on E.Coli concentrations (Van den Tillaart, 2022). For the sake of this exercise, we have focused on creating proximiations for water quality through downloadable datasets and while they might not give a perfect image of areas in Amsterdam with clean water we think they work as an approximation. Zwimming water areas in combination with polder areas which are common overflow points of the sewage system are used to identefie a good route. 
 
 Our primary starting point for water quality is the map of possible swimming locations in Amsterdam (Gemeente Amsterdam, n.d.). This data set can be downloaded in several formats but predominantly csv and GEOjson. Both are easily legible also without a program as they can be opened in Excel and an online browser. However, because this information is geographic in nature, for later processing the geographic format GEOjson is easier to use in Python. The file has point data but is set up as a standard number file. The file formats are both quite straightforward to open and geopandas or pandas are some of the most straightforward libraries in python that can probably read the data. For analysis plotly might be the best option to graph but for geographic analysis one should stick with geopandas. In addition, the mapbox plug-in with plotly or omnx data from OpenStreetMap, could be used to situate the points on a map. 
 
-Overall, the file contains the name of the place, categories of the type of swim water (pool, official outdoor spot, etc), an ID code and the coordinates of the location. It is important to consider that this data set contains both indoor and outdoor locations which are safe for swimming. Thus, within these categories one should filter for outdoor locations and the canal. Furthermore, the file is semicolon delimited and has commas, which should be considered when reading it with pandas. 
+Overall, the file contains the name of the place, categories of the type of swim water (pool, official outdoor spot, etc), an ID code and the coordinates of the location. It is important to consider that this data set contains both indoor and outdoor locations which are safe for swimming. Thus, within these categories one should filter for outdoor locations and the canal. Furthermore, the file is semicolon delimited and has commas, which should be considered when reading it with pandas.
+
+To supplement the official swimming locations a quick google search allows us to consider other commonly used and mointored swimming areas in amsterdam which might not appear in the official data set. This gives us a broad set of locations to consider.
+
+The Polder data is also taken from MapsAmsterdam. This data is oftne in reserach considered a proxy form common overflow points into the canals form the sewage systems. Thus they might be more likely to be contaminated under rainy conditions. This data is also a shapefile in CSV or GEOjson format. For our analysis we have vizualized it through GEOjson.
 
 
 ### Decision on best route
 
-We plotted the possible swimming locations and the busiest canal boats traffic routes in a map of Amsterdam (Amsterdam Canal Routes - Google my maps, n.d. ; Gemeente Amsterdam, n.d.). Many of the outdoor swimming spots are far out of the city center which is inconvenient if we consider accessibility and the location of hotels and airbnbs. Since we know that there is good swimming water next to AMS and the city swim was also located there, we think that is the best route (Amsterdam City Swim, n.d.). For assignment 4, we decide to use AMS as a starting point and will create the route based on the canal traffic.
+We plotted the possible swimming locations and the busiest canal boats traffic routes as well as polder areas in a map of Amsterdam (Amsterdam Canal Routes - Google my maps, n.d. ; Gemeente Amsterdam, n.d.). 
+```python
+fig, ax = plt.subplots(figsize=(200,200))
+ax.set_aspect('equal')
+ax.set_facecolor('#ffffff')
+
+water.plot(ax=ax, color="lightblue")
+gdf_zwemplek.plot(ax=ax, marker = 'o', markersize = 3000, color="lightgreen")
+gdf_pol.plot(ax=ax, color= "#FF8700")
+gdf_swimm.plot(ax=ax, marker = 'o', markersize = 3000, color="darkgreen")
+gdf_boat.plot(ax=ax, color= "#D22B2B", linewidth = 20)
+
+plt.savefig("waterways_amsterdam.png")
+```
+![water_ams](./waterways_amsterdam.png)
+
+Many of the outdoor swimming spots as we can see are quite far out of the city center which is inconvenient if we consider accessibility by public transport and the location of hotels and airbnbs. Thus we have decided to focu the are we consider the the city center of Amsterdam.
+
+```python
+fig, ax = plt.subplots(figsize=(200,200))
+ax.set_aspect('equal')
+ax.set_facecolor('#ffffff')
+
+water_center.plot(ax=ax, color="lightblue")
+# all the zempleks in amsterdam are too far out of the city center thus to low connectivity
+#gdf_zwemplek.plot(ax=ax, marker = 'o', markersize = 3000, color="#FFC300")
+swimm_cent.plot(ax=ax, marker = 'o', markersize = 10000, color="darkgreen")
+gdf_boat.plot(ax=ax, color= "#D22B2B", linewidth = 50)
+
+plt.savefig("waterways_center_amsterdam.png")
+```
+![water_cent_ams](./waterways_center_amsterdam.png)
+
+ As we can see there is oen swimming location in the city center close to marinneterrain which we should conisder. In general we can see that this area of the maps also would avoid the main tourism canal trips. Futhermore this area was used for the CIty Swimm indivcating that its well suited bth quality and logisitcally for a large swimming even (Amsterdam City Swim, n.d.). For assignment 4, we thus decide to use AMS as a starting point and will create the route based on the canal traffic.
 
 ### References 
 
