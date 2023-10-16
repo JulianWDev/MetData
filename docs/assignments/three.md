@@ -70,3 +70,27 @@ plt.ylabel('amount of airbnbs')
 From this, we can conclude that the vast majority of airbnb's are available only some days in a year, with a lot of them almost never available. 
 
 ### How many hotel rooms should be built if Amsterdam wants to accommodate the same number of tourists?
+We create a new list with only airbnbs which have been online for more than 0 nights so minimum 1 day, and then we count how many items are in our list to see how many airbnbs this counts for.
+```python
+airbnb_more = airbnb_df[airbnb_df['availability_365'] > 0]
+airbnb_available = len(airbnb_more)
+print(airbnb_available)
+# Some numbers show that the average bnb offers around 3 rooms, so we will assume 3 guests to anser this question
+people_airbnb = airbnb_available * 3
+print(people_airbnb)
+# Standard hotel rooms have 2 beds which is the assumption for the next calculaition
+hotel_rooms = people_airbnb/2
+print(hotel_rooms)
+```
+`5438,
+16314,
+8157.0`
+
+### How many different licenses are issued?
+If we remove duplicate licenses, the length of the list will be the amount of different licenses.
+```python
+airbnb_df
+license = list(set(airbnb_df["license"])) 
+print("The number of licences after removing duplicates:" + str(len(license)))
+```
+`The number of licences after removing duplicates :7289`
