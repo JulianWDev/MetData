@@ -29,7 +29,6 @@ print(graph_water.nodes)
 import gpxpy
 import gpxpy.gpx
 
-# read the swim route from the gpx file
 import codecs
 gpx_file = codecs.open('./swim_route.gpx', 'r', encoding='utf-8')
 swim_route_gpx = gpxpy.parse(gpx_file)
@@ -38,12 +37,10 @@ swim_route = []
 for track in swim_route_gpx.tracks:
     for segment in track.segments:
         for point in segment.points:
-            # find the nearest node in the graph_water for each coordinate
             nearest_node = ox.distance.nearest_nodes(graph_water, point.longitude, point.latitude, return_dist=True)
             if nearest_node[1] < 10:
                 swim_route.append(nearest_node[0])
 
-# remove duplicates from the swim route
 swim_route_deduplicated = []
 prev_elem = None
 for elem in swim_route:
@@ -52,16 +49,14 @@ for elem in swim_route:
     prev_elem = elem
 print(swim_route_deduplicated)
 
-# find the shortest path between the nodes in the swim route
 import networkx as nx
 swim_route_path = []
 for i in range(len(swim_route_deduplicated) - 1):
     path = nx.shortest_path(graph_water, swim_route_deduplicated[i], swim_route_deduplicated[i+1])
-    swim_route_path.extend(path[1:]) # add all nodes except the first one to the path
+    swim_route_path.extend(path[1:])
 print(swim_route_path)
 ```
 ```python
-# plot the swim route on top of the water graph
 bbox_ams_centre = (52.378324, 52.355264, 4.939041, 4.886169)
 swim_route_fig, ax = ox.plot_graph_route(graph_water, swim_route_path, route_linewidth=2, route_color='red', show=True, orig_dest_size=2, bgcolor='white', node_color="lightblue", edge_color="lightblue", bbox=bbox_ams_centre, close=False)
 ```
@@ -70,13 +65,11 @@ swim_route_fig, ax = ox.plot_graph_route(graph_water, swim_route_path, route_lin
 For the event headquartes we decided to put it centrally in our routs since our route circles back onto itself.
 
 ```python
-# find the nodes in the swim route
 swim_route_nodes = []
 
 for node in swim_route_path:
     swim_route_nodes.append(graph_water.nodes[node])
 
-# find the centre of all the nodes in the swim route
 average_x = 0.0
 average_y = 0.0
 for node in swim_route_nodes:
@@ -87,7 +80,6 @@ for node in swim_route_nodes:
 average_x = average_x / len(swim_route_nodes)
 average_y = average_y / len(swim_route_nodes)
 
-# plot the centre of the swim route on the swim_route_fig
 swim_route_fig, ax = ox.plot_graph_route(graph_water, swim_route_path, route_linewidth=2, route_color='red', show=False, orig_dest_size=2, bgcolor='white', node_color="lightblue", edge_color="lightblue", bbox=bbox_ams_centre, close=False)
 water_center.plot(ax=ax, color="lightblue")
 ax.scatter(average_x, average_y, s=100, c='red', marker='o', zorder=2)
