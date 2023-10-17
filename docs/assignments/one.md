@@ -35,6 +35,26 @@ The Polder data is also taken from MapsAmsterdam. This data is oftne in reserach
 
 We plotted the possible swimming locations and the busiest canal boats traffic routes as well as polder areas in a map of Amsterdam (Amsterdam Canal Routes - Google my maps, n.d. ; Gemeente Amsterdam, n.d.). 
 ```python
+city_name = "Amsterdam"
+water = ox.geometries.geometries_from_place( city_name, tags={'natural' : 'water'})
+
+url_pol = "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=RAINPROOF_POLDERRIOOL&THEMA=rainproof"
+response_pol = requests.get(url_pol)
+gdf_pol = gpd.read_file(response_pol.text)
+
+gdf_boat = gpd.read_file("Amsterdam_canal_routes.geojson")
+
+df_zwemwater =  pd.read_csv("ZWEMWATER.csv", sep = ";")
+df_zwemplek = df_zwemwater[df_zwemwater['Categorie']=="Zwemplek"]
+print(df_zwemplek.head())
+gdf_zwemplek = gpd.GeoDataFrame(df_zwemplek[['OBJECTNUMMER', "LNG", "LAT", "Categorie"]],
+    geometry=gpd.points_from_xy(df_zwemplek.LNG, df_zwemplek.LAT), crs="WGS84")
+
+df_swimm =  pd.read_csv("Swimming.csv")
+print(df_swimm.head())
+gdf_swimm = gpd.GeoDataFrame(df_swimm[['place', "LNG", "LAT"]],
+    geometry=gpd.points_from_xy(df_swimm.LAT, df_swimm.LNG), crs="WGS84")
+      
 fig, ax = plt.subplots(figsize=(200,200))
 ax.set_aspect('equal')
 ax.set_facecolor('#ffffff')
