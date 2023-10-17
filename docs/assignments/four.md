@@ -139,7 +139,7 @@ closest_stops.plot(ax=ax, markersize = 5000, color = "orange")
 
 plt.savefig("publictransport.png")
 ```
-![transport](./public.png)
+![Alt text](public1.png)
 
 Overall the capacity of the public transport is estimated through data. We have 5 buss stops wihtin 5 km, and 5 tram stops. Both pass between 5-10 times and hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seatsand 30 standing places, whiel the capacity of a tram is 60 seats and a 125 standing spaces. Thus we have calculated the numeber of poepl which can be moved per hour below.
 
@@ -225,4 +225,4 @@ for _, row in resturants_gdf.iterrows():
         ax.text(x, y, txt, ha="right", va="bottom", fontsize =80)
 plt.savefig("restaurantsnearby.png")
 ```
-![horeca](./resturant.png)
+![resturant](restaurantsnearby.png)
