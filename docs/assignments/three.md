@@ -25,7 +25,28 @@ figure.show()
 First, we read the airbnb dataset which we downloaded from the airbnb scraper website. Then, we use `value_counts` to create a new dataframe that contains the count of each occurance of a specific neighbourhood. We plot this new dataframe in a histogram using plotly express.
 
 ### Which street in Amsterdam has the most AirBnB apartments?
-We were unable to complete this assignment, because it required reverse geocoding which is a paid service. Using google maps API, it would have costed about 40$. Free solutions were inadequate, because they disallow bulk API requests.
+We need to find the street address for each of the AirBNB listings in the database. To do this, we first put all of the coordinates of the listings into a dataframe.
+```python
+from geopy.geocoders import Nominatim
+airbnb_df["coord"] = airbnb_df.latitude.astype(str) + ", " + airbnb_df.longitude.astype(str)
+coordinates = airbnb_df["coord"].tolist()
+result = []
+```
+Then, we use Nominatim to find the addresses for each of the coordinate points in the dataframe. We format the resulting data, and then add it to a list with all of the addresses.
+```python
+geolocator = Nominatim(user_agent="#####")
+for i in coordinates:
+    address = geolocator.reverse(i)
+    split_data = address.address.split(',')
+    short_data = split_data[:7]
+    result.append(short_data)
+```
+However, the formatting for each of the list items is not machine-readable. To be able to parse this information, we use a visual inspection to conclude that the street name is in one of the first three columns. So first, we remove all the other columns, then we count how many times each street in the dataframe shows up. This is our answer.
+```python
+adresses_rel = pd.concat([adresses['1'], adresses['2'], adresses['3']])
+count = adresses_rel.value_counts()
+```
+`The street Nassaukade has the most AirBNB's, with 183 registered listings. `
 
 ### Try to cross reference the data from the AirBnB dataset with the BBGA. Can you figure out if all apartments of AirBnB are designated as housing? Which number of apartments are not rented out all the time but are also used as normal housing?
 First, we filter the BBGA and select only the rows with relevant data:
