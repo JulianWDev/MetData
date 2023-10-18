@@ -71,8 +71,9 @@ bbga_short_df.replace({ "Oud West, De Baarsjes" :"De Baarsjes - Oud-West",
 ```
 Next, we plot the two files together in a bar graph using plotly express.
 ```python
-graph = px.bar(bbga_short_df, x='gebiednaam', y='BHVESTAIRBNB', barmode='group')
-graph.add_bar(x=df_neighbourhood['neighbourhood'], y=df_neighbourhood['count'])
+graph = px.bar(bbga_short_df, x='gebiednaam', y='BHVESTAIRBNB', barmode='group', title="Comparison of AirBnBs in Amsterdam per data set", text_auto=True)
+graph.add_bar(x=df_neighbourhood['neighbourhood'], y=df_neighbourhood['count'], name="AirBNB dataset", text=df_neighbourhood['count'])
+
 graph.show()
 ```
 ![Airbnb BBGA Comparison](./airbnb_bbga_comparison.png)
