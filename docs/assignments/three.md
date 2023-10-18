@@ -91,6 +91,8 @@ plt.ylabel('amount of airbnbs')
 
 From this, we can conclude that the vast majority of airbnb's are available only some days in a year, with a lot of them almost never available. 
 
+This is also the reason why the BBGA comes out so much higher than the airbnb listings. The BBGA data is for the whole year where the data was collected, while the AirBNB listings is a snapshot of the site at the moment we download the data.
+
 ### How many hotel rooms should be built if Amsterdam wants to accommodate the same number of tourists?
 We create a new list with only airbnbs which have been online for more than 0 nights so minimum 1 day, and then we count how many items are in our list to see how many airbnbs this counts for.
 ```python
