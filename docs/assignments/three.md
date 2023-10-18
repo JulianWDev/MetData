@@ -41,7 +41,8 @@ for i in coordinates:
     short_data = split_data[:7]
     result.append(short_data)
 ```
-However, the formatting for each of the list items is not machine-readable. To be able to parse this information, we use a visual inspection to conclude that the street name is in one of the first three columns. So first, we remove all the other columns, then we count how many times each street in the dataframe shows up. This is our answer.
+However, the formatting for each of the list items is not machine-readable. To be able to parse this information, we use a visual inspection to conclude that the street name is in one of the first three columns. So we then we createa new list which only includes the vairbales within the first 3 colums, then we count how many times each individual items show up. From here we print the top of the value count list and scan for the firt item which is a street name and and how often it appears.
+
 ```python
 adresses_rel = pd.concat([adresses['1'], adresses['2'], adresses['3']])
 count = adresses_rel.value_counts()
