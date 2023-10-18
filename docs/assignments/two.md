@@ -46,13 +46,15 @@ As stated in the previous question, three support crafts will be used. We can as
 Of course this estimation is made with assumption of equal weather throughout the year. Howver, since this event runs in the summer the likelyhood of a higher energy yield from the panels is high.
 
 ### Is it possible to accommodate these facilities within the city? 
-To power the three crafts boats, we will only need one solar panel running for a month. As there are still plenty of suitable roofs in the city, it is safe to assume that we could easily find a place for the solar panel. Another option would be to install the solar panel directly on the boats. Indeed, more and more boats are doing this alternative. 
+To power the three crafts boats, we will need 68 solar panels running for a day. these solar panels would need an approximate area of 112 m2. Research from AMS showes that there is space for around 3.250.000 more solar panels (300WP) on rooftops in Amsterdam (AMS, n.d.). Consequently, ther is definetly sufficient space to produce the energy necessary for the event locally. Another option would be to install the solar panel directly on the boats. Indeed, more and more boats are doing this alternative. 
 
 ### Would there be any effect on the water quality if there are less/no canal boats using fossil fuels?
 Based on previous research, we assume that while removing fossil fuel riven boats from the canals will reduce the amount of leakage in the canals it's not relevant to current pollution issues. Previous measurement of water quality focus predominantly of e.coli and blue alga. These are mostly caused by sewage water overflowing and warmth and fertilizer in the water. Thus, while it would make the water cleaner it's not the most prominent issue at the moment.
 
 ### References
 ABC boat hire. (n.d.) How much fuel does a narrowboat use? - . ABC Boat Hire | ABC Boat Hire. https://www.abcboathire.com/blog/how-much-fuel-does-a-narrowboat-use 
+
+AMS. (n.d.). AMS Institute and TU Delft Research: Space to fit 3.250.000 solar panels on Amsterdam rooftops. AMS Institute - AMS Institute and TU Delft research. https://www.ams-institute.org/news/pv-advent-calendar-ams-institute-3250000-solar-panels-amsterdam-rooftops/ 
 
 Boat Fuel Economy. (n.d.). Liters: Mercury - evinrude - yamaha - suzuki - honda - tohatsu - outboard fuel consumption per hour LPH. Liters | Mercury - Evinrude - Yamaha - Suzuki - Honda - Tohatsu - Outboard Fuel Consumption per Hour LPH. https://www.boat-fuel-economy.com/outboard-fuel-consumption-liters 
 
