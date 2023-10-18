@@ -143,7 +143,31 @@ print(y)
 The buss and tram routes are both taken from Maps Amsterdam. Here we selected for routes which are stopping at the stops previously identefied.
 
 ### The centrality of our route
-The centrality of our route is calculated through X. We though this wa ssuitable because of Y.
+For this assignment we are using closness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our streetnetwork.
+
+We assume that this will allow us to conside how well other roads connect to our points and thus give us some type of estimation for how well foot/bike traffic will flow too and from our location.
+
+```Python
+
+endpoint_x = 52.372870
+endpoint_y = 4.914240
+
+center_x = average_x
+center_y = average_y
+
+streets_around_center = ox.graph.graph_from_point((endpoint_x, endpoint_y), dist = 750, network_type='all')
+
+nearest_node = ox.distance.nearest_nodes(streets_around_center, endpoint_x, endpoint_y, return_dist=True)
+print(nearest_node)
+nearest_center_node = ox.distance.nearest_nodes(streets_around_center, center_x, center_y, return_dist=True)
+print(nearest_center_node)
+
+centrality_end = nx.closeness_centrality(streets_around_center,46364736)
+centrality_center = nx.closeness_centrality(streets_around_center, 1024689023)
+```
+`The centrality of the finish and beginning is 0.027686988971731767, and the centrality of the headquarter is 0.041805298953587616`
+
+Overall our relativly low number indicates that the starting and end point is relativly well conected as a lower centrality number means the nodes are better connected.
 
 ### Resturant and Cafes in the area
 To calculate the resturants in the area we intially use the osmnx tags to call for resturants, bars and cafes in the areas.
