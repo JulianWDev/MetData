@@ -85,6 +85,20 @@ plt.show()
 ```
 ![swimming_center](./swimmingcenter.png)
 
+### Use the centre to find a suitable spot for the event headquarters.
+If we assume that the event headquarters should be on the water, we can find the nearest node on the water to the centre of the swim route. That would likely be a good place for the headquarters, because nodes are often placed at junctions of canals, which would provide more space for support boats and such.
+```python
+nearest_node = ox.distance.nearest_nodes(graph_water, average_x, average_y, return_dist=True)
+
+# plot the swim route on top of the water graph
+swim_route_fig, ax = ox.plot_graph_route(graph_water, swim_route_path, route_linewidth=2, route_color='red', show=False, orig_dest_size=2, bgcolor='white', node_color="lightblue", edge_color="lightblue", bbox=bbox_ams_centre, close=False)
+water_center.plot(ax=ax, color="lightblue")
+ax.scatter(graph_water.nodes[nearest_node[0]]['x'], graph_water.nodes[nearest_node[0]]['y'], s=100, c='red', marker='o', zorder=2)
+plt.show()
+```
+![Headquarters](./headquarters.png)
+
+This seems like a good location. There is good road access and the Entrepotdok offers sufficient space for support boats and structures.
 
 ### Finding closest Bus and Tram stops to the swimming location
 We aim to find the bus and tram locations closest to the traffic route. The circumference considered is 1000m since we consider that somewhat realistic to walk to and from the event. The bus stop locations are taken from osmnx while the tram and metro stops come from Maps Amsterdam published by the Gemeente Amsterdam (Gemeente Amsterdam, 2023).
