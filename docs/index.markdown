@@ -2,7 +2,7 @@
 layout: default
 ---
 
-![Amsterdam with cool cyber lines](./index_pic.png)
+![Amsterdam with cool cyber lines](./index_pic.jpeg)
 
 ### Welcome to the results website for our group of the Metropolitan Data 1 course.
 Please select one of the assignments on the left to view our work.
