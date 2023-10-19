@@ -5,7 +5,7 @@ author: Carlotta, Camille, Lora, and Julian
 ---
 
 ### What Amsterdam will receive from tourist tax if the event lasts a week and you will have 30.000 visitors?
-We can calculate the tourist tax with a siple calculation using the airbnb data. (City of Amsterdam, n.d.).
+We can calculate the tourist tax with a simple calculation using the airbnb data. (City of Amsterdam, n.d.).
 ```python
 # In amsterdam the tax is 3 euros and we assume a stay of 6 night since the arrival and depature day would be included in the 7
 tourist_tax = 3 * 30000 * 6
@@ -86,7 +86,7 @@ graph.add_bar(x=df_neighbourhood['neighbourhood'], y=df_neighbourhood['count'], 
 
 graph.show()
 ```
-<iframe src="./embeds/comparison.html" height="300" width="100%" style="border:none"></iframe>
+<iframe src="./embeds/comparison.html" height="400" width="100%" style="border:none"></iframe>
 The BBGA dataset is in blue, the airbnb dataset is in red.
 
 To see wether or not an airbnb be is also used a as a house we consider the vairbale availabilit_365. This variable presumably showes how many days a place is available on airbnb and thus to what extend it is also used for other means.
@@ -120,6 +120,8 @@ print(hotel_rooms)
 `5438,
 16314,
 8157.0`
+
+From this calculation we can conclude that, assuming that on average each AirBNB hosts 3 guests, and each hotel hosts 2, we would need to build 8157 extra hotel rooms.
 
 ### How many different licenses are issued?
 If we remove duplicate licenses, the length of the list will be the amount of different licenses.
