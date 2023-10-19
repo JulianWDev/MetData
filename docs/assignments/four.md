@@ -5,7 +5,7 @@ author: Carlotta, Camille, Lora, and Julian
 ---
 
 ### Where will the swimming route go depending on the variables of Assignment 1?
-In Assignment 1 we outlined several different data sets which together might provide a proxy for water quality and traffic meausres.Thereby it can outline where the potential swimming route could go (Gemeente Amsterdam. (n.d.)).
+In Assignment 1 we outlined several different data sets which together might provide a proxy for water quality and traffic measures. Thereby it can outline where the potential swimming route could go (Gemeente Amsterdam, n.d.).
 
 ![water_ways_center](./waterways_center_amsterdam.png)
 
@@ -145,7 +145,7 @@ plt.savefig("publictransport.png")
 ```
 ![Alt text](public1.png)
 
-Overall, the capacity of the public transport is estimated through data found online. We have 5 bus stops within 1 km, and 5 tram stops. Both pass between 5-10 times and hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and a 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people which can be moved per hour below.
+Overall, the capacity of public transport is estimated through data found online. We have 5 bus stops within 1 km, and 5 tram stops. Both pass between 5-10 times an hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people who can be moved per hour below.
 
 ```Python
 y=(5*7.5*185)+(5*5*60)
@@ -157,7 +157,7 @@ print(y)
 The bus and tram routes are both taken from Maps Amsterdam. Here, we selected four routes which are stopping at the stops previously identified.
 
 ### What is the centrality of our route? 
-For this assignment we are using closeness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our streetnetwork.
+For this assignment, we are using closeness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our street network.
 
 We assume that this will allow us to consider how well other roads connect to our points and thus give us some type of estimation for how well foot/bike traffic will flow to and from our location.
 
@@ -181,12 +181,12 @@ centrality_center = nx.closeness_centrality(streets_around_center, 1024689023)
 ```
 `The centrality of the finish and beginning is 0.027686988971731767, and the centrality of the headquarter is 0.041805298953587616`
 
-Overall our relatively low number indicates that the starting and end point is pretty well conected as a lower centrality number means the nodes are better connected.
+Overall our relatively low number indicates that the starting and end point is pretty well connected as a lower centrality number means the nodes are better connected.
 
 ### Which restaurants and cafes are at a 10 min walk distance?
-To calculate the restaurants in the area, we intially use the osmnx tags to call for restaurants, bars and cafes in the areas.
+To calculate the restaurants in the area, we initially use the osmnx tags to call for restaurants, bars and cafes in the areas.
 
-Then we aim to limit the network to 10 min walking distance approximately. For this we calclated an average distance of 750/800 meters to cover the distance.
+Then we aim to limit the network to 10 min walking distance approximately. For this, we calculated an average distance of 750/800 meters to cover the distance.
 
 ```Python
 time_in_seconds = 10*60
@@ -195,7 +195,7 @@ print(time_in_seconds, speed_ms)
 distance_cafe = time_in_seconds * speed_ms
 print(distance_cafe)
 ```
-Initially, we call the street network of Amsterdam. From there, we isolated for all nodes walking distance by setting dist_type to 'network' which visualizes nodes that are 750 m away over the edges. With this, we set up a general limiting box that describes the walking distance from our end/start point. Then, by limiting the restaurant dataset for this bounding box and projecting it we can see what cafes, bars and resturants are within approximatly 10 min walking distance.
+Initially, we call the street network of Amsterdam. From there, we isolated all nodes within walking distance by setting dist_type to 'network' which visualizes nodes that are 750 m away over the edges. With this, we set up a general limiting box that describes the walking distance from our end/start point. Then, by limiting the restaurant dataset for this bounding box and projecting it we can see what cafes, bars and restaurants are within approximately 10 min walking distance.
 
 ```Python
 x_coor = 52.372870
@@ -216,7 +216,7 @@ restaurant.plot(color = 'red', ax=ax)
 ```
 ![plot](./plot.png)
 
-Red dots are all the cafes, restaurants and bars. The blue dots are the nodes in the street network 10 min from our core location.
+The red dots are all the cafes, restaurants and bars. The blue dots are the nodes in the street network 10 min from our core location.
 
 ```Python
 restaurant["x"] = restaurant.centroid.x
