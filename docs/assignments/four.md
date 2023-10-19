@@ -154,7 +154,37 @@ print(y)
 8437.5, thus approximatly 8438 people can be transported per hour.
 
 ### Where do the bus and tram routes run?
-The bus and tram routes are both taken from Maps Amsterdam. Here, we selected four routes which are stopping at the stops previously identified.
+The bus routes are unable to be identified as osmnx is unable to return the routes to a specific bus id. However, Maps Amsterdam has an overview of all the tram lines. Thus we select the routes which are contained in our list of relevant trams and then graph them with different colours.
+```Python
+filtered = []
+selected_routes = ["26", '7', '14', '51', '53', '54']
+
+for ind in gdf_tram.index:
+    for p in selected_routes:
+        item = gdf_tram['Lijn'].loc[gdf_tram.index[ind]]
+        item_str = str(item)
+        if p in item_str:
+            filtered.append(gdf_tram.loc[ind])
+
+gdf_filtered = gpd.GeoDataFrame(filtered, columns= ['Modaliteit', 'Lijn', 'Lijn_select', 'geometry', 'Name', 'dtype'], geometry='geometry')
+
+colour_routes = ["red", 'blue', 'darkgreen', 'purple', 'pink', 'yellow']
+df_colour = pd.DataFrame([colour_routes], columns= ["26", '7', '14', '51', '53', '54'])
+
+colour_items = []
+
+for i in range(len(gdf_filtered)):
+    for p in selected_routes:
+        item = gdf_filtered['Lijn'].loc[gdf_filtered.index[i]]
+        item_str = str(item)
+        if p in item_str:
+            colour_items.append(df_colour[p][0])
+            break
+
+gdf_filtered["colour"] = colour_items
+```
+
+![Alt text](maps_tram.png)
 
 ### What is the centrality of our route? 
 For this assignment, we are using closeness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our street network.
