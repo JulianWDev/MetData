@@ -5,7 +5,7 @@ author: Carlotta, Camille, Lora, and Julian
 ---
 
 ### What Amsterdam will receive from tourist tax if the event lasts a week and you will have 30.000 visitors?
-We can calculate the tourist tax with a simple sum. 3 euros times 30.000 visitors times six nights.
+We can calculate the tourist tax with a simple sum. 3 euros times 30.000 visitors times six nights (City of Amsterdam, n.d.).
 ```python
 tourist_tax = 3 * 30000 * 6
 print(tourist_tax, "euros")
@@ -13,7 +13,7 @@ print(tourist_tax, "euros")
 `540000 euros`
 
 ### Plot the amount of AirBnB locations per neighbourhood.
-We can plot the amount of AirBNB location by neighbourhood using the following code:
+We can plot the amount of AirBNB location by neighbourhood using the following code (Gemeente Amsterdam, 2023):
 ```python
 airbnb_df = pd.read_csv('./listings.csv')
 bbga_df = pd.read_csv('./bbga.csv', sep=';')
@@ -119,3 +119,9 @@ license = list(set(airbnb_df["license"]))
 print("The number of licences after removing duplicates:" + str(len(license)))
 ```
 `The number of licences after removing duplicates :7289`
+
+### References
+
+City of Amsterdam. (n.d.). Tourist tax (toeristenbelasting). https://www.amsterdam.nl/en/municipal-taxes/tourist-tax-(toeristenbelasting)/
+
+Gemeente Amsterdam. (2023, June 15). Data en informatie. https://data.amsterdam.nl/datasets/rl6-35tFAw2Ljw/basisbestand-gebieden-amsterdam-bbga/

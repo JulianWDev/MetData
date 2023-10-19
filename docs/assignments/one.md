@@ -14,7 +14,7 @@ When considering the need to not interfere with water transport we haven’t fou
 
 Similarly, on the platform marine traffic we can see a live feed of the main traffic all over the world (MarineTraffic, n.d. ). This also shows where boats move through amsterdam currently and over time. While this data is not available to us directly, through a scraper tool one could over time collect the data and make a detailed map of which canals are used and how much.This would liekly provide the most accrate data in the future however ot fot his porjetc. 
 
-For this assignment we looked for data we could directly use for coding, even if that might mean some level of compromise in accuracy. Thus, we used a route set up on google maps which showed four main tourists routes to take when in Amsterdam. We assume that these four routes will likely cover the canals in amsterdam which are the most frequented for leisure traffic and thus where the race would have the most impact [Google maps link.](https://www.google.com/maps/d/viewer?mid=1-isVe-eoiAiJj18lnT3cmeoLnbw&hl=en_US&ll=52.375187000000004%2C4.8828430000000145&z=15 ). This data is a geometric shapefile and originally comes as XML file, which we then converted to a GEOJSON file. Its a combination of lines and nodes, but visualized as an object later in this document.
+For this assignment we looked for data we could directly use for coding, even if that might mean some level of compromise in accuracy. Thus, we used a route set up on google maps which showed four main tourists routes to take when in Amsterdam. We assume that these four routes will likely cover the canals in amsterdam which are the most frequented for leisure traffic and thus where the race would have the most impact (Amsterdam Canal routes - Google my maps., 2023). This data is a geometric shapefile and originally comes as XML file, which we then converted to a GEOJSON file. Its a combination of lines and nodes, but visualized as an object later in this document.
 
 ### Datasets for water quality  
 
@@ -90,7 +90,7 @@ plt.savefig("waterways_center_amsterdam.png")
 
 ### References 
 
-Amsterdam Canal routes - Google my maps. (s. d.). Google My Maps. https://www.google.com/maps/d/viewer?mid=1-isVe-eoiAiJj18lnT3cmeoLnbw&hl=en_US&ll=52.375187000000004%2C4.8828430000000145&z=15 
+Amsterdam Canal routes - Google my maps. (n.d.). Google My Maps. https://www.google.com/maps/d/viewer?mid=1-isVe-eoiAiJj18lnT3cmeoLnbw&hl=en_US&ll=52.375187000000004%2C4.8828430000000145&z=15 
 
 Amsterdam City Swim. (n.d.). Locatie and Route. Retrieved October 10, 2023, from https://www.amsterdamcityswim.nl/informatie/locatie-en-route
 
