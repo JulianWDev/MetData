@@ -31,7 +31,7 @@ df_neighbourhood = airbnb_df['neighbourhood'].value_counts().reset_index().renam
 figure = px.bar(df_neighbourhood, x='neighbourhood', y='count')
 figure.show()
 ```
-<iframe src="./embeds/airbnb_distribution.html" height="200"></iframe>
+<iframe src="./embeds/airbnb_distribution.html" height="300" width="100%" style="border:none"></iframe>
 First, we read the airbnb dataset which we downloaded from the airbnb scraper website. Then, we use `value_counts` to create a new dataframe that contains the count of each occurance of a specific neighbourhood. We plot this new dataframe in a histogram using plotly express.
 
 ### Which street in Amsterdam has the most AirBnB apartments?
