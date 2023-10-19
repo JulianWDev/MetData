@@ -5,11 +5,11 @@ author: Carlotta, Camille, Lora, and Julian
 ---
 
 ### Where will the swimming route go depending on the variables of Assignment 1?
-In Assignment 1 we outlined several different dtaat set which together might provide a proxy for water quality and traffic meausres and thereby outlines where the potential swimming route could go.
+In Assignment 1 we outlined several different data sets which together might provide a proxy for water quality and traffic meausres and thereby outlines where the potential swimming route could go (Gemeente Amsterdam. (n.d.)).
 
 ![water_ways_center](./waterways_center_amsterdam.png)
 
-To figure out the specific route we decided on a strating location with the zwimming water point close to ASM form there we created a code which would return a route circuling the area avoiding parts of the network which are red in the above picture.
+To figure out the specific route we decided on a starting location with the swimming water point close to AMS. From there we created a code which would return a route circuling the area avoiding parts of the network which are red in the above picture.
 
 ```python
 import osmnx as ox
@@ -87,7 +87,7 @@ plt.show()
 
 
 ### The closest Bus and Tram stops to the swimming location
-We aim to find the buss and tram locations closest to the traffic route. The circumfrance considered is 1000m since we consider that somehwat realistic to walk to and drom the event. The bus stop locaiotns are taken from osmnx while the tram and metro stops come from Maps Amsterdma published by the Gemeente Amsterdam.
+We aim to find the buss and tram locations closest to the traffic route. The circumfrance considered is 1000m since we consider that somewhat realistic to walk to and from the event. The bus stop locations are taken from osmnx while the tram and metro stops come from Maps Amsterdam published by the Gemeente Amsterdam (Gemeente Amsterdam, 2023).
 
 ```python
 x_coor = 52.372870
@@ -131,7 +131,7 @@ plt.savefig("publictransport.png")
 ```
 ![Alt text](public1.png)
 
-Overall the capacity of the public transport is estimated through data. We have 5 buss stops wihtin 1 km, and 5 tram stops. Both pass between 5-10 times and hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seatsand 30 standing places, whiel the capacity of a tram is 60 seats and a 125 standing spaces. Thus we have calculated the numeber of poepl which can be moved per hour below.
+Overall the capacity of the public transport is estimated through data. We have 5 bus stops wihtin 1 km, and 5 tram stops. Both pass between 5-10 times and hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and a 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people which can be moved per hour below.
 
 ```Python
 y=(5*7.5*185)+(5*5*60)
@@ -167,12 +167,12 @@ centrality_center = nx.closeness_centrality(streets_around_center, 1024689023)
 ```
 `The centrality of the finish and beginning is 0.027686988971731767, and the centrality of the headquarter is 0.041805298953587616`
 
-Overall our relativly low number indicates that the starting and end point is relativly well conected as a lower centrality number means the nodes are better connected.
+Overall our relatively low number indicates that the starting and end point is pretty well conected as a lower centrality number means the nodes are better connected.
 
 ### Resturant and Cafes in the area
-To calculate the resturants in the area we intially use the osmnx tags to call for resturants, bars and cafes in the areas.
+To calculate the resturants in the area we intially use the osmnx tags to call for restaurants, bars and cafes in the areas.
 
-Then we aim to limit the network to 10 min walking distance approximatly. For this we calucated an average distance of 750/800 meters to cover the distance
+Then we aim to limit the network to 10 min walking distance approximately. For this we calclated an average distance of 750/800 meters to cover the distance.
 
 ```Python
 time_in_seconds = 10*60
@@ -181,7 +181,7 @@ print(time_in_seconds, speed_ms)
 distance_cafe = time_in_seconds * speed_ms
 print(distance_cafe)
 ```
-Initially we call the street network of amsterdam. Form there we isolated for all nodes walking distance to set up a general limiting box which describes the walking distance from our end/start point. Then by limiting the retsurant data set for this bounding box and projecting it we can see what cafes, bars and resturants are within approximatly 10min walking distance.
+Initially we call the street network of amsterdam. From there we isolated for all nodes walking distance to set up a general limiting box which describes the walking distance from our end/start point. Then by limiting the restaurant data set for this bounding box and projecting it we can see what cafes, bars and resturants are within approximatly 10min walking distance.
 
 ```Python
 x_coor = 52.372870
@@ -202,7 +202,7 @@ restaurant.plot(color = 'red', ax=ax)
 ```
 ![plot](./plot.png)
 
-Red dots are all the cafes, resturants and bars. The blue dots are the nodes in the street network 10 min from our core location.
+Red dots are all the cafes, restaurants and bars. The blue dots are the nodes in the street network 10 min from our core location.
 
 ```Python
 restaurant["x"] = restaurant.centroid.x
@@ -240,3 +240,13 @@ for _, row in resturants_gdf.iterrows():
 plt.savefig("restaurantsnearby.png")
 ```
 ![resturant](restaurantsnearby.png)
+
+### References
+
+Gemeente Amsterdam. (n.d.). Zwem- en speelwater. https://maps.amsterdam.nl/zwemwater/ 
+
+Gemeente Amsterdam. (2023). Tram- en metronet 2023. https://maps.amsterdam.nl/trammetro/
+
+GVB. (2023, May 4). Onze trams - over GVB. Over GVB. https://over.gvb.nl/ov-in-amsterdam/voer-en-vaartuigen/tram-in-cijfers/
+
+Wikipedia-bijdragers. (2022). Stadsbus. Wikipedia. https://nl.wikipedia.org/wiki/Stadsbus#:~:text=Stadsbussen%20hebben%20minder%20zitplaatsen%20en,een%202%2B2%2Dstoelopstelling.
