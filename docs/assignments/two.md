@@ -38,15 +38,15 @@ Amsterdam's iconic canal boats have been under scrutiny for their energy use and
 Well, we assume that economically feasible is about whether changing diesel motors in canal boats to an electric alternative. The costs of the replacement varies between 15.000 and 50.000 euro (Selzer, 2023). When considering a fleet where there are still 6248 boats (7350 - 1120 electric boats)  which are diesel or gas driven that means a minimum replacement cost of 93.450.000 euros, a maximum cost of 311.500.000 (TNO, 2023). However, a more likely number is an avergae around euros 202.475.000.  Whether this is feasible depends on the investment capacity of the canal boat companies. There are also some variables in the charging capacity. In practice, most canal boats would be able to ride for about 8 hours with on a full battery. Now, they travel for about 10-12 hours (possible with tanking) (WaterrecreatieBV, 2014). This means that companies might not be able to get the same profit per day with electric vehicles unless they invest in larger accu’s.
 
 ### How many support boats and vehicles are needed for the Paralympics event only. 
-On average you need 12 swimmers per support craft(). In previous years, only 32 people participated in the 5 km event at the IPC world championship in swimming and no 5 km race has been seen in the previous Paralympics to compare (). This would mean that we would need at least 3 support crafts and then we could even host 4 more participants if needed. Likely however there would be some more support vessels as videos from previous event show around 8-9 vessels.
+On average you need 12 swimmers per support craft(Royal Navy, n.d.). In previous years, only 32 people participated in the 5 km event at the IPC world championship in swimming and no 5 km race has been seen in the previous Paralympics to compare (Munatones, 2010). This would mean that we would need at least 3 support crafts and then we could even host 4 more participants if needed. Likely however there would be some more support vessels as videos from previous event show around 8-9 vessels.
 
 ### If only clean energy can be used, how many solar panels or wind turbines are needed?
-As stated in the previous question, three support crafts will be used. We can assume that we will use the boats for 4h during this day to move the athletes. This means that the boat canals will be running for 12h and they need 1.572kWh/h, leading to an energy need of 18.864 kWh for the event. One WP of solar panels generates 0.9 kWh of energy per year in the Netherlands, thus on average 0.00247 kWh per day. Therefore, we will need 20401.06 WP of solar panels for one full day to power the boats or we could use 68 whole solar panel (300WP) for one day.
+As stated in the previous question, three support crafts will be used. We can assume that we will use the boats for 4h during this day to move the athletes. This means that the boat canals will be running for 12h and they need 1.572kWh/h, leading to an energy need of 18.864 kWh for the event. One WP of solar panels generates 0.9 kWh of energy per year in the Netherlands, thus on average 0.00247 kWh per day (Moraitis et al, 2018). Therefore, we will need 20401.06 WP of solar panels for one full day to power the boats or we could use 68 whole solar panel (300WP) for one day.
 
 Of course this estimation is made with assumption of equal weather throughout the year. Howver, since this event runs in the summer the likelyhood of a higher energy yield from the panels is high.
 
 ### Is it possible to accommodate these facilities within the city? 
-To power the three crafts boats, we will need 68 solar panels running for a day. these solar panels would need an approximate area of 112 m2. Research from AMS showes that there is space for around 3.250.000 more solar panels (300WP) on rooftops in Amsterdam (AMS, n.d.). Consequently, ther is definetly sufficient space to produce the energy necessary for the event locally. Another option would be to install the solar panel directly on the boats. Indeed, more and more boats are doing this alternative. 
+To power the three crafts boats, we will need 68 solar panels running for a day. These solar panels would need an approximate area of 112 m2. Research from AMS showes that there is space for around 3.250.000 more solar panels (300WP) on rooftops in Amsterdam (AMS, n.d.). Consequently, ther is definetly sufficient space to produce the energy necessary for the event locally. Another option would be to install the solar panel directly on the boats. Indeed, more and more boats are doing this alternative. 
 
 ### Would there be any effect on the water quality if there are less/no canal boats using fossil fuels?
 Based on previous research, we assume that while removing fossil fuel riven boats from the canals will reduce the amount of leakage in the canals it's not relevant to current pollution issues. Previous measurement of water quality focus predominantly of e.coli and blue alga. These are mostly caused by sewage water overflowing and warmth and fertilizer in the water. Thus, while it would make the water cleaner it's not the most prominent issue at the moment.
@@ -61,6 +61,14 @@ Boat Fuel Economy. (n.d.). Liters: Mercury - evinrude - yamaha - suzuki - honda 
 Gemeente Amsterdam. (n.d.). Grachtenmonitor 2022. openresearch.amsterdam. https://openresearch.amsterdam/nl/page/92981/grachtenmonitor-2022 
 
 Kammuang-lue, N. & Boonjun, J. (2019). Simulation and comparison on energy consumption between electric and diesel buses: Feasibility Study on electric rubber-tire bus potential in Chiang Mai. 2019 IEEE 10th International Conference on Mechanical and Aerospace Engineering (ICMAE). https://doi.org/10.1109/icmae.2019.8880940 
+
+Moraitis, P., Kausika, B. B., Nortier, N., & Van Sark, W. (2018). Urban environment and solar PV performance: the case of the Netherlands. Energies, 11(6), 1333. https://doi.org/10.3390/en11061333
+
+
+Munatones, S. (2010). IPC Swimming World Championships. World Open Water Swimming Association. https://www.openwaterswimming.com/ipc-swimming-world-championships/
+
+Royal Navy. (n.d.). Swimming across the Solent. https://www.royalnavy.mod.uk/khm/portsmouth/using-the-port-for-recreation/swimming-across-the-solent
+
 
 Selzer, M. (2023). How much does a Lithium-Ion battery cost in 2023? Lawn Care Blog | Lawn Love. https://lawnlove.com/blog/lithium-ion-battery-cost/
 
