@@ -5,11 +5,11 @@ author: Carlotta, Camille, Lora, and Julian
 ---
 
 ### Where will the swimming route go depending on the variables of Assignment 1?
-In Assignment 1 we outlined several different data sets which together might provide a proxy for water quality and traffic meausres and thereby outlines where the potential swimming route could go (Gemeente Amsterdam. (n.d.)).
+In Assignment 1 we outlined several different data sets which together might provide a proxy for water quality and traffic meausres.Thereby it can outline where the potential swimming route could go (Gemeente Amsterdam. (n.d.)).
 
 ![water_ways_center](./waterways_center_amsterdam.png)
 
-To figure out the specific route we decided on a starting location with the swimming water point close to AMS. From there we created a code which would return a route circuling the area avoiding parts of the network which are red in the above picture.
+To figure out the specific route we decided on a starting location with the swimming water point close to AMS which has a safe swimming location in front. From there we created a code which would return a route circuling the area avoiding parts of the network which are red in the above picture.
 
 ```python
 import osmnx as ox
@@ -60,7 +60,7 @@ swim_route_fig, ax = ox.plot_graph_route(graph_water, swim_route_path, route_lin
 ```
 ![swimming](./swimming.png)
 
-For the event headquartes we decided to put it centrally in our routs since our route circles back onto itself.
+We decided to put the headquarters central in our route since our route circles back onto itself.
 
 ```python
 swim_route_nodes = []
@@ -87,7 +87,7 @@ plt.show()
 
 
 ### The closest Bus and Tram stops to the swimming location
-We aim to find the buss and tram locations closest to the traffic route. The circumfrance considered is 1000m since we consider that somewhat realistic to walk to and from the event. The bus stop locations are taken from osmnx while the tram and metro stops come from Maps Amsterdam published by the Gemeente Amsterdam (Gemeente Amsterdam, 2023).
+We aim to find the bus and tram locations closest to the traffic route. The circumference considered is 1000m since we consider that somewhat realistic to walk to and from the event. The bus stop locations are taken from osmnx while the tram and metro stops come from Maps Amsterdam published by the Gemeente Amsterdam (Gemeente Amsterdam, 2023).
 
 ```python
 x_coor = 52.372870
@@ -131,7 +131,7 @@ plt.savefig("publictransport.png")
 ```
 ![Alt text](public1.png)
 
-Overall the capacity of the public transport is estimated through data. We have 5 bus stops wihtin 1 km, and 5 tram stops. Both pass between 5-10 times and hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and a 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people which can be moved per hour below.
+Overall, the capacity of the public transport is estimated through data found online. We have 5 bus stops within 1 km, and 5 tram stops. Both pass between 5-10 times and hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and a 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people which can be moved per hour below.
 
 ```Python
 y=(5*7.5*185)+(5*5*60)
@@ -139,13 +139,13 @@ print(y)
 ```
 8437.5, thus approximatly 8438 people can be transported per hour.
 
-### Where do the buss and tram routes run?
-The buss and tram routes are both taken from Maps Amsterdam. Here we selected for routes which are stopping at the stops previously identefied.
+### Where do the bus and tram routes run?
+The bus and tram routes are both taken from Maps Amsterdam. Here, we selected four routes which are stopping at the stops previously identified.
 
 ### The centrality of our route
-For this assignment we are using closness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our streetnetwork.
+For this assignment we are using closeness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our streetnetwork.
 
-We assume that this will allow us to conside how well other roads connect to our points and thus give us some type of estimation for how well foot/bike traffic will flow too and from our location.
+We assume that this will allow us to consider how well other roads connect to our points and thus give us some type of estimation for how well foot/bike traffic will flow to and from our location.
 
 ```Python
 
@@ -169,8 +169,8 @@ centrality_center = nx.closeness_centrality(streets_around_center, 1024689023)
 
 Overall our relatively low number indicates that the starting and end point is pretty well conected as a lower centrality number means the nodes are better connected.
 
-### Resturant and Cafes in the area
-To calculate the resturants in the area we intially use the osmnx tags to call for restaurants, bars and cafes in the areas.
+### Restaurant and Cafes in the area
+To calculate the restaurants in the area, we intially use the osmnx tags to call for restaurants, bars and cafes in the areas.
 
 Then we aim to limit the network to 10 min walking distance approximately. For this we calclated an average distance of 750/800 meters to cover the distance.
 
@@ -181,7 +181,7 @@ print(time_in_seconds, speed_ms)
 distance_cafe = time_in_seconds * speed_ms
 print(distance_cafe)
 ```
-Initially we call the street network of amsterdam. From there we isolated for all nodes walking distance to set up a general limiting box which describes the walking distance from our end/start point. Then by limiting the restaurant data set for this bounding box and projecting it we can see what cafes, bars and resturants are within approximatly 10min walking distance.
+Initially, we call the street network of Amsterdam. From there, we isolated for all nodes walking distance by setting dist_type to 'network' which visualizes nodes that are 750 m away over the edges. With this, we set up a general limiting box that describes the walking distance from our end/start point. Then, by limiting the restaurant dataset for this bounding box and projecting it we can see what cafes, bars and resturants are within approximatly 10 min walking distance.
 
 ```Python
 x_coor = 52.372870
