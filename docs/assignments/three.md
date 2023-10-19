@@ -126,13 +126,21 @@ From this calculation we can conclude that, assuming that on average each AirBNB
 ### How many different licenses are issued?
 If we remove duplicate licenses, the length of the list will be the amount of different licenses.
 ```python
-airbnb_df
 license = list(set(airbnb_df["license"])) 
-print("The number of licences after removing duplicates:" + str(len(license)))
+exempt_licence = airbnb_df[airbnb_df['license'] == "Exempt"]
+
+print("The number of licences after removing duplicates :" + str(len(license)))
+print(str(len(exempt_licence)) + " are exempt")
 ```
 `The number of licences after removing duplicates :7289`
 
+`609 are exempt`
+
+In principle, every vacation rental needs its own personal license code which proves that they are legally allowed to rent out (Airbnb, n.d). This is reflected in the broad set of licenses we see initially. But what is really interesting is that we see 609 houses which are exempt from having a license which seems like a high number considering having a licence is obligatory.
+
 ### References
+
+Airbnb. (n.d.) Registration in Amsterdam. https://www.airbnb.nl/d/registrationamsterdam?_set_bev_on_new_domain=1697731796_ZDJhMTg2ZDY3MWRl 
 
 City of Amsterdam. (n.d.). Tourist tax (toeristenbelasting). https://www.amsterdam.nl/en/municipal-taxes/tourist-tax-(toeristenbelasting)/
 
