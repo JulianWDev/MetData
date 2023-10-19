@@ -49,7 +49,7 @@ Of course, this estimation is made with the assumption of equal weather througho
 To power the eight crafts boats, we will need 68 solar panels running for a day. These solar panels would need an approximate area of 112 m2. Research from AMS shows that there is space for around 3 250 000 more solar panels (300WP) on rooftops in Amsterdam (AMS, n.d.). Consequently, there is definitely sufficient space to produce the energy necessary for the event locally. Another option would be to install the solar panel directly on the boats. Indeed, more and more boats are doing this alternative. 
 
 ### Would there be any effect on the water quality if there are less/no canal boats using fossil fuels?
-Based on previous research, we assume that while removing fossil fuel riven boats from the canals will reduce the amount of leakage in the canals it's not relevant to current pollution issues. Previous measurement of water quality focus predominantly of e.coli and blue alga. These are mostly caused by sewage water overflowing and warmth and fertilizer in the water. Thus, while it would make the water cleaner it's not the most prominent issue at the moment.
+Based on previous research, we assume that while removing fossil fuel riven boats from the canals will reduce the amount of leakage in the canals it's not relevant to the main pollution issues (Minami, 2003). Previous measurement of water quality focus predominantly of e.coli and blue alga (an den Tillaart, 2017; Van Roekel, 2022). These are mostly caused by sewage water overflowing and warmth and fertilizer in the water. Thus, while it would make the water cleaner it's not the most prominent issue at the moment.
 
 ### References
 ABC boat hire. (n.d.) How much fuel does a narrowboat use? - . ABC Boat Hire | ABC Boat Hire. https://www.abcboathire.com/blog/how-much-fuel-does-a-narrowboat-use 
@@ -62,8 +62,9 @@ Gemeente Amsterdam. (n.d.). Grachtenmonitor 2022. openresearch.amsterdam. https:
 
 Kammuang-lue, N. & Boonjun, J. (2019). Simulation and comparison on energy consumption between electric and diesel buses: Feasibility Study on electric rubber-tire bus potential in Chiang Mai. 2019 IEEE 10th International Conference on Mechanical and Aerospace Engineering (ICMAE). https://doi.org/10.1109/icmae.2019.8880940 
 
-Moraitis, P., Kausika, B. B., Nortier, N., & Van Sark, W. (2018). Urban environment and solar PV performance: the case of the Netherlands. Energies, 11(6), 1333. https://doi.org/10.3390/en11061333
+Minami, S. (2003). The role of developing electric boats in this era. Journal of Asian Electric Vehicles, 1(2), 483-488. https://union-services.com/aevs/483-488.pdf
 
+Moraitis, P., Kausika, B. B., Nortier, N., & Van Sark, W. (2018). Urban environment and solar PV performance: the case of the Netherlands. Energies, 11(6), 1333. https://doi.org/10.3390/en11061333
 
 Munatones, S. (2010). IPC Swimming World Championships. World Open Water Swimming Association. https://www.openwaterswimming.com/ipc-swimming-world-championships/
 
