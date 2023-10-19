@@ -5,7 +5,7 @@ author: Carlotta, Camille, Lora, and Julian
 ---
 
 ### How many of the canal boats currently in use are diesel/fossil fuel driven and how many boats are electrical driven?
-Amsterdam as a city is very proud of their canals and a prominent tourist attraction is taking canal boats in Amsterdam. By 2025 Amsterdam aims their boat fleet to become fully electric but current numbers show that we are still far away (TNO, 2023). In 2023 there estimated of 7350 boats for pleasure time in Amsterdam, off these 15% are estimated to be emission free and 42.5% are using gas while another 42.5 is using diesel (TNO, 2023). This would mean that around 1103 boats are currently electric in the canals of Amsterdam (TNO, 2023).
+Amsterdam as a city is very proud of their canals and a prominent tourist attraction is taking canal boats in Amsterdam. By 2025 Amsterdam aims their boat fleet to become fully electric but current numbers show that we are still far away (TNO, 2023). In 2023 it was estimated that there were 7350 boats for pleasure time in Amsterdam, off these 15% are estimated to be emission free and 42.5% are using gas while another 42.5 is using diesel (TNO, 2023). This would mean that around 1103 boats are currently electric in the canals of Amsterdam (TNO, 2023).
 
 ```python
 electric_boats = 7350 * 0.15
