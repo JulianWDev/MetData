@@ -39,9 +39,9 @@ In order to find the best swimming route, we plotted the possible swimming locat
 city_name = "Amsterdam"
 water = ox.geometries.geometries_from_place( city_name, tags={'natural' : 'water'})
 
-url_pol = "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=RAINPROOF_POLDERRIOOL&THEMA=rainproof"
-response_pol = requests.get(url_pol)
-gdf_pol = gpd.read_file(response_pol.text)
+url_polder = "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=RAINPROOF_POLDERRIOOL&THEMA=rainproof"
+response_polder = requests.get(url_polder)
+gdf_polder = gpd.read_file(response_polder.text)
 
 gdf_boat = gpd.read_file("Amsterdam_canal_routes.geojson")
 
@@ -62,7 +62,7 @@ ax.set_facecolor('#ffffff')
 
 water.plot(ax=ax, color="lightblue")
 gdf_zwemplek.plot(ax=ax, marker = 'o', markersize = 3000, color="lightgreen")
-gdf_pol.plot(ax=ax, color= "#FF8700")
+gdf_polder.plot(ax=ax, color= "#FF8700")
 gdf_swimm.plot(ax=ax, marker = 'o', markersize = 3000, color="darkgreen")
 gdf_boat.plot(ax=ax, color= "#D22B2B", linewidth = 20)
 
@@ -77,10 +77,10 @@ fig, ax = plt.subplots(figsize=(200,200))
 ax.set_aspect('equal')
 ax.set_facecolor('#ffffff')
 
-water_center.plot(ax=ax, color="lightblue")
+gdf_water_center.plot(ax=ax, color="lightblue")
 # all the zempleks in amsterdam are too far out of the city center thus to low connectivity
 #gdf_zwemplek.plot(ax=ax, marker = 'o', markersize = 3000, color="#FFC300")
-swimm_cent.plot(ax=ax, marker = 'o', markersize = 10000, color="darkgreen")
+gdf_swimm_cent.plot(ax=ax, marker = 'o', markersize = 10000, color="darkgreen")
 gdf_boat.plot(ax=ax, color= "#D22B2B", linewidth = 50)
 
 plt.savefig("waterways_center_amsterdam.png")
