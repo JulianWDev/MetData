@@ -23,7 +23,7 @@ print("The total tourist tax earned by Amsterdam from the 30.000 visitors would 
 `The total tourist tax earned by Amsterdam from the 30.000 visitors would be: 2143286.0€`
 
 ### Plot the amount of AirBnB locations per neighbourhood.
-We can plot the amount of AirBNB location by neighbourhood using the following code (Gemeente Amsterdam, 2023):
+We can plot the amount of AirBNB location by neighbourhood using the following code (Gemeente Amsterdam, 2023; Inside Airbnb, n.d.):
 ```python
 airbnb_df = pd.read_csv('./listings.csv')
 bbga_df = pd.read_csv('./bbga.csv', sep=';')
@@ -145,3 +145,5 @@ Airbnb. (n.d.) Registration in Amsterdam. https://www.airbnb.nl/d/registrationam
 City of Amsterdam. (n.d.). Tourist tax (toeristenbelasting). https://www.amsterdam.nl/en/municipal-taxes/tourist-tax-(toeristenbelasting)/
 
 Gemeente Amsterdam. (2023, June 15). Data en informatie. https://data.amsterdam.nl/datasets/rl6-35tFAw2Ljw/basisbestand-gebieden-amsterdam-bbga/
+
+Inside Airbnb. (n.d.). Get the Data. http://insideairbnb.com/get-the-data 
