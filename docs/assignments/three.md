@@ -86,7 +86,7 @@ graph.add_bar(x=df_neighbourhood['neighbourhood'], y=df_neighbourhood['count'], 
 
 graph.show()
 ```
-![Airbnb BBGA Comparison](./airbnb_bbga_comparison.png)
+<iframe src="./embeds/comparison.html" height="300" width="100%" style="border:none"></iframe>
 The BBGA dataset is in blue, the airbnb dataset is in red.
 
 To see wether or not an airbnb be is also used a as a house we consider the vairbale availabilit_365. This variable presumably showes how many days a place is available on airbnb and thus to what extend it is also used for other means.
