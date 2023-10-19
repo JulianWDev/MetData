@@ -86,7 +86,7 @@ plt.show()
 ![swimming_center](./swimmingcenter.png)
 
 
-### The closest Bus and Tram stops to the swimming location
+### Finding closest Bus and Tram stops to the swimming location
 We aim to find the bus and tram locations closest to the traffic route. The circumference considered is 1000m since we consider that somewhat realistic to walk to and from the event. The bus stop locations are taken from osmnx while the tram and metro stops come from Maps Amsterdam published by the Gemeente Amsterdam (Gemeente Amsterdam, 2023).
 
 ```python
@@ -142,7 +142,7 @@ print(y)
 ### Where do the bus and tram routes run?
 The bus and tram routes are both taken from Maps Amsterdam. Here, we selected four routes which are stopping at the stops previously identified.
 
-### The centrality of our route
+### What is the centrality of our route? 
 For this assignment we are using closeness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our streetnetwork.
 
 We assume that this will allow us to consider how well other roads connect to our points and thus give us some type of estimation for how well foot/bike traffic will flow to and from our location.
@@ -169,7 +169,7 @@ centrality_center = nx.closeness_centrality(streets_around_center, 1024689023)
 
 Overall our relatively low number indicates that the starting and end point is pretty well conected as a lower centrality number means the nodes are better connected.
 
-### Restaurant and Cafes in the area
+### Which restaurants and cafes are at a 10 min walk distance?
 To calculate the restaurants in the area, we intially use the osmnx tags to call for restaurants, bars and cafes in the areas.
 
 Then we aim to limit the network to 10 min walking distance approximately. For this we calclated an average distance of 750/800 meters to cover the distance.
