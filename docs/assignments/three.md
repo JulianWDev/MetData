@@ -32,7 +32,8 @@ figure = px.bar(df_neighbourhood, x='neighbourhood', y='count')
 figure.show()
 ```
 <iframe src="./embeds/airbnb_distribution.html" height="300" width="100%" style="border:none"></iframe>
-First, we read the airbnb dataset which we downloaded from the airbnb scraper website. Then, we use `value_counts` to create a new dataframe that contains the count of each occurance of a specific neighbourhood. We plot this new dataframe in a histogram using plotly express.
+First, we read the airbnb dataset which we downloaded from the airbnb scraper website. Then, we use `value_counts` to create a new data frame that contains the count of each occurrence of a specific neighbourhood. We plot this new data frame in a histogram using plotly express.
+
 
 ### Which street in Amsterdam has the most AirBnB apartments?
 We need to find the street address for each of the AirBNB listings in the database. To do this, we first put all of the coordinates of the listings into a dataframe.
@@ -42,7 +43,7 @@ airbnb_df["coord"] = airbnb_df.latitude.astype(str) + ", " + airbnb_df.longitude
 coordinates = airbnb_df["coord"].tolist()
 result = []
 ```
-Then, we use Nominatim to find the addresses for each of the coordinate points in the dataframe. We format the resulting data, and then add it to a list with all of the addresses.
+Then, we use Nominatim to find the addresses for each of the coordinate points in the data frame. We format the resulting data and then add it to a list with all of the addresses.
 ```python
 geolocator = Nominatim(user_agent="#####")
 for i in coordinates:
@@ -51,7 +52,7 @@ for i in coordinates:
     short_data = split_data[:7]
     result.append(short_data)
 ```
-However, the formatting for each of the list items is not machine-readable. To be able to parse this information, we use a visual inspection to conclude that the street name is in one of the first three columns. So we then we createa new list which only includes the vairbales within the first 3 colums, then we count how many times each individual items show up. From here we print the top of the value count list and scan for the firt item which is a street name and and how often it appears.
+However, the formatting for each of the list items is not machine-readable. To be able to parse this information, we use a visual inspection to conclude that the street name is in one of the first three columns. So we then create a new list which only includes the variables within the first 3 columns, then we count how many times each individual item show-up. From here we print the top of the value count list and scan for the first item which is a street name and and how often it appears.
 
 ```python
 adresses_rel = pd.concat([adresses['1'], adresses['2'], adresses['3']])
@@ -89,7 +90,7 @@ graph.show()
 <iframe src="./embeds/comparison.html" height="400" width="100%" style="border:none"></iframe>
 The BBGA dataset is in blue, the airbnb dataset is in red.
 
-To see wether or not an airbnb be is also used a as a house we consider the vairbale availabilit_365. This variable presumably showes how many days a place is available on airbnb and thus to what extend it is also used for other means.
+To see whether or not an airbnb is also used as a house we consider the variable availabilit_365. This variable presumably shows how many days a place is available on airbnb and thus to what extent it is also used for other means.
 ```python
 airbnb_df.hist(column='availability_365', bins=[0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 300, 310, 320, 330, 340, 350, 360, 370])
 
@@ -102,7 +103,7 @@ plt.ylabel('amount of airbnbs')
 
 From this, we can conclude that the vast majority of airbnb's are available only some days in a year, with a lot of them almost never available. 
 
-This is also the reason why the BBGA comes out so much higher than the airbnb listings. The BBGA data is for the whole year where the data was collected, while the AirBNB listings is a snapshot of the site at the moment we download the data.
+This is also the reason why the BBGA comes out so much higher than the airbnb listings. The BBGA data is for the whole year where the data was collected, while the Airbnb listings is a snapshot of the site at the moment we download the data.
 
 ### How many hotel rooms should be built if Amsterdam wants to accommodate the same number of tourists?
 We create a new list with only airbnbs which have been online for more than 0 nights so minimum 1 day, and then we count how many items are in our list to see how many airbnbs this counts for.
@@ -121,7 +122,7 @@ print(hotel_rooms)
 16314,
 8157.0`
 
-From this calculation we can conclude that, assuming that on average each AirBNB hosts 3 guests, and each hotel hosts 2, we would need to build 8157 extra hotel rooms.
+From this calculation, we can conclude that, assuming that on average each AirBNB hosts 3 guests, and each hotel hosts 2, we would need to build 8157 extra hotel rooms.
 
 ### How many different licenses are issued?
 If we remove duplicate licenses, the length of the list will be the amount of different licenses.
