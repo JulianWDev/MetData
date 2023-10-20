@@ -227,60 +227,80 @@ print(distance_cafe)
 Initially, we call the street network of Amsterdam. From there, we isolated all nodes within walking distance by setting dist_type to 'network' which visualizes nodes that are 750 m away over the edges. With this, we set up a general limiting box that describes the walking distance from our end/start point. Then, by limiting the restaurant dataset for this bounding box and projecting it we can see what cafes, bars and restaurants are within approximately 10 min walking distance.
 
 ```Python
-x_coor = 52.372870
-y_coor = 4.914240
+# Find the nearest node to the center of the swimming route
+beggining_swim_route = swim_route_gpx.tracks[0].segments[0].points[0]
+road_node_swim_route = ox.distance.nearest_nodes(sevenfiftym_network_graph, beggining_swim_route.longitude, beggining_swim_route.latitude, return_dist=False)
 
-point_graph = ox.graph.graph_from_point((x_coor, y_coor), dist = 750, network_type='all', dist_type = "network")
-ox.plot_graph(point_graph)
+# Find all restaurants, pubs, and bars in a 750 metre radius to find all locations which could feasibly be in walking distance.
+restaurant_sevenfifty = ox.features_from_point((x_coor, y_coor), dist=750, tags={'amenity':['restaurant','pub', 'bar']})
 
-gdf_nodes =ox.utils_graph.graph_to_gdfs(point_graph, nodes=True, edges=False, node_geometry=True, fill_edge_geometry=True)
-gdf_nodes.head()
+# Find the nearest node in the network graph for each horeca
+for index, row in restaurant_sevenfifty.iterrows():  
+    long = row['geometry'].centroid.x
+    lat = row['geometry'].centroid.y
+    nearest_node = ox.distance.nearest_nodes(sevenfiftym_network_graph, long, lat, return_dist=False)
+    restaurant_sevenfifty.at[index, 'nearest_node'] = nearest_node
 
-restaurant = ox.features_from_point((x_coor, y_coor), dist=750, tags={'amenity':['restaurant','pub', 'bar']})
+# For each horeca, find the shortest route to the center of the swimming route, and append it to the list
+import networkx as nx
+for index, row in restaurant_sevenfifty.iterrows():
+    try:
+        route_dist = nx.shortest_path_length(sevenfiftym_network_graph, source=row['nearest_node'], target=road_node_swim_route, weight='length')
+        restaurant_sevenfifty.at[index, 'route_dist'] = route_dist
+    except:
+        restaurant_sevenfifty.at[index, 'route_dist'] = 800
 
-fig, ax = plt.subplots(figsize=(10,10), sharex=True, sharey=True)
 
-gdf_nodes.plot(color='blue', ax=ax)
-restaurant.plot(color = 'red', ax=ax)
+# Remove all horeca that are more than 750 metres away from the center of the swimming route
+for index, row in restaurant_sevenfifty.iterrows():
+    if row['route_dist'] > 750:
+        restaurant_sevenfifty.drop(index, inplace=True)
 ```
-![plot](./plot.png)
-
-The red dots are all the cafes, restaurants and bars. The blue dots are the nodes in the street network 10 min from our core location.
+This gives us a dataframe with only the restaurants which are within 10 minutes walking distance. Then, in order to plot the restaurants on the map:
 
 ```Python
-restaurant["x"] = restaurant.centroid.x
-restaurant["y"] = restaurant.centroid.y
+# We create a boundary polygon
+north = 52.378
+south = 52.370
+west = 4.910
+east = 4.923
 
-north_end = 52.378
-south_end = 52.370
-west_end = 4.910
-east_end = 4.923
+boundary_polygon = Polygon([(west, north), (east, north), (east, south), (west, south), (west, north)])
 
-df_restaurant = restaurant[['name', 'x', 'y']].copy()
+# We get the water in the polygon
+water = ox.geometries.geometries_from_bbox(north, south, east, west, tags={'natural' : 'water'})
+water_bbox = water.clip(boundary_polygon)
 
-df_copy = df_restaurant[df_restaurant["x"]>= west_end].copy()
-df_copy2 = df_copy[df_copy["x"]<= east_end].copy()
-df_copy3 =df_copy2[df_copy2["y"]<= north_end].copy()
-df_closeby_restaurant = df_copy3[df_copy3["y"]>= south_end].copy()
+# We get the roads in the polygon
+G = ox.graph_from_bbox(north, south, east, west)
+plt.savefig("restaurantsnearby.png")
 
-df_closeby_restaurant
-
+# And we create a bounding box
+bbox = [52.378, 52.370, 4.91, 4.923]
+```
+This code above prepares all the graphs we will need for our map. To make the map:
+```python
+# We plot the graph and overlay the horeca we found previously.
 fig, ax = plt.subplots(figsize=(200,200))
 ax.set_aspect('equal')
 ax.set_facecolor('white')
-
 ox.plot_graph(G, edge_color='grey',
                         node_size=0, edge_linewidth=10,
                         show=False, close=False, ax=ax,)
 water.plot(ax=ax, color="lightblue")
-resturants_gdf.plot(ax=ax, color ="red", markersize = 5000)
+swim_route_fig = ox.plot_graph_route(graph_water, swim_route_path, route_linewidth=100, zorder=2, route_color='red', show=False, orig_dest_size=0, bgcolor='white', node_size=0, edge_size=0, bbox=bbox, close=False, ax=ax)
+restaurant_sevenfifty.plot(ax=ax, markersize = 5000, color = "orange")
 
-for _, row in resturants_gdf.iterrows():
+for index, row in restaurant_sevenfifty.iterrows():
         txt = row["name"],
         x, y, = row["geometry"].x, row["geometry"].y
-        ax.text(x, y, txt, ha="right", va="bottom", fontsize =80)
-plt.savefig("restaurantsnearby.png")
+        ax.text(x, y, txt, ha="right", va="bottom", fontsize =130)
+
+plt.savefig("./restaurantsnearby.png")
+plt.show()
 ```
+
+
 ![resturant](restaurantsnearby.png)
 
 ### References
