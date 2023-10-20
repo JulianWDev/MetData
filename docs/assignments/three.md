@@ -5,7 +5,7 @@ author: Carlotta, Camille, Lora, and Julian
 ---
 
 ### What Amsterdam will receive from tourist tax if the event lasts a week and you will have 30.000 visitors?
-We can calculate the tourist tax with a simple calculation using the airbnb data. (City of Amsterdam, n.d.).
+We can calculate the tourist tax with a simple calculation using the airbnb data. (City of Amsterdam, n.d.a).
 ```python
 # In amsterdam the tax is 3 euros and we assume a stay of 6 night since the arrival and depature day would be included in the 7
 tourist_tax = 3 * 30000 * 6
@@ -90,6 +90,8 @@ graph.show()
 <iframe src="./embeds/comparison.html" height="400" width="100%" style="border:none"></iframe>
 The BBGA dataset is in blue, the airbnb dataset is in red.
 
+Presumably the BBGA comes out so much higher than the airbnb listings, since it collects data throughout the year and showes the sum from the year. The Airbnb data is a snapshot of the site at the moment of time we download the data. Consequently, it will leave out listings which might be registered in the BBGA because they are no longer online.
+
 To see whether or not an airbnb is also used as a house we consider the variable availabilit_365. This variable presumably shows how many days a place is available on airbnb and thus to what extent it is also used for other means.
 ```python
 airbnb_df.hist(column='availability_365', bins=[0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 300, 310, 320, 330, 340, 350, 360, 370])
@@ -103,7 +105,16 @@ plt.ylabel('amount of airbnbs')
 
 From this, we can conclude that the vast majority of airbnb's are available only some days in a year, with a lot of them almost never available. 
 
-This is also the reason why the BBGA comes out so much higher than the airbnb listings. The BBGA data is for the whole year where the data was collected, while the Airbnb listings is a snapshot of the site at the moment we download the data.
+```python
+#from research we can see that private houses can only be rented out for 30 days maximum, thus we can assume
+# that all houses which are online for less than 30 days each year are also used for housing
+also_housing = airbnb_df[airbnb_df['availability_365'] <= 30]
+print(len(also_housing))
+```
+`4586`
+
+As seen in City of Amsterdam (n.d.b) private residences can only be rented out for a maximum of 30 days if they are zoned as housing. Thus we can assume that the listings which are available for less than 30 days a year are also used as housing, which means around 4586.
+
 
 ### How many hotel rooms should be built if Amsterdam wants to accommodate the same number of tourists?
 We create a new list with only airbnbs which have been online for more than 0 nights so minimum 1 day, and then we count how many items are in our list to see how many airbnbs this counts for.
@@ -165,7 +176,9 @@ In principle, every vacation rental needs its own personal license code which pr
 
 Airbnb. (n.d.) Registration in Amsterdam. https://www.airbnb.nl/d/registrationamsterdam?_set_bev_on_new_domain=1697731796_ZDJhMTg2ZDY3MWRl 
 
-City of Amsterdam. (n.d.). Tourist tax (toeristenbelasting). https://www.amsterdam.nl/en/municipal-taxes/tourist-tax-(toeristenbelasting)/
+City of Amsterdam. (n.d.a). Tourist tax (toeristenbelasting). https://www.amsterdam.nl/en/municipal-taxes/tourist-tax-(toeristenbelasting)/
+
+City of Amsterdam (n.d.b) Apply for a permit. https://www.amsterdam.nl/en/housing/holiday-rentals/applying-permit/ 
 
 Gemeente Amsterdam. (2023, June 15). Data en informatie. https://data.amsterdam.nl/datasets/rl6-35tFAw2Ljw/basisbestand-gebieden-amsterdam-bbga/
 
