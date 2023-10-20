@@ -161,7 +161,7 @@ print(hotel_rooms)
 9413
 4706.5`
 
-From this calculation, we can conclude that, currently the Airbnbs in Amsterdam have around 9413 beds, and if we assume that each hotel hosts 2 beds, we would need to build around 4707 extra hotel rooms.
+From this calculation, we can conclude that, currently the Airbnbs in Amsterdam have around 9413 beds, and if we assume that each hotel room hosts 2 beds, we would need to build around 4707 extra hotel rooms.
 
 ### How many different licenses are issued?
 If we remove duplicate licenses, the length of the list will be the amount of different licenses.
