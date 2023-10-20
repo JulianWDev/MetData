@@ -23,6 +23,11 @@ print("The total tourist tax earned by Amsterdam from the 30.000 visitors would 
 `The total tourist tax earned by Amsterdam from the 30.000 visitors would be: 2143286.0€`
 
 ### Plot the amount of AirBnB locations per neighbourhood.
+
+![Alt text](airbnb.png)
+
+The map above shows an overview of all the aibnbs in Amsterdam and their location in Amsterdam.
+
 We can plot the amount of AirBNB location by neighbourhood using the following code (Gemeente Amsterdam, 2023; Inside Airbnb, n.d.):
 ```python
 airbnb_df = pd.read_csv('./listings.csv')
@@ -38,6 +43,7 @@ First, we read the airbnb dataset which we downloaded from the airbnb scraper we
 ### Which street in Amsterdam has the most AirBnB apartments?
 We need to find the street address for each of the AirBNB listings in the database. To do this, we first put all of the coordinates of the listings into a dataframe.
 ```python
+import reverse_geocoder as rg
 from geopy.geocoders import Nominatim
 airbnb_df["coord"] = airbnb_df.latitude.astype(str) + ", " + airbnb_df.longitude.astype(str)
 coordinates = airbnb_df["coord"].tolist()
