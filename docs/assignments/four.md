@@ -115,17 +115,17 @@ features = ox.features.features_from_point(center_point, tags=tags, dist=300)
 features.head()
 features.info()
 
-url_pol = "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=TRAMMETRO_PUNTEN_2022&THEMA=trammetro"
-response_pol = requests.get(url_pol)
-gdf_pol = gpd.read_file(response_pol.text)
+url_tram = "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=TRAMMETRO_PUNTEN_2022&THEMA=trammetro"
+response_tram = requests.get(url_tram)
+gdf_tram = gpd.read_file(response_tram.text)
 
 x_coor = 52.372870
 y_coor = 4.914240
 target_point = Point(x_coor, y_coor)
 
-gdf_pol['distance'] = gdf_pol['geometry'].apply(lambda stop: great_circle((x_coor, y_coor), (stop.y, stop.x)).meters)
+gdf_tram['distance'] = gdf_tram['geometry'].apply(lambda stop: great_circle((x_coor, y_coor), (stop.y, stop.x)).meters)
 
-closest_stops = gdf_pol.nsmallest(5, 'distance')
+closest_stops = gdf_tram.nsmallest(5, 'distance')
 print(closest_stops)
 ```
 ```Python
@@ -133,9 +133,8 @@ fig, ax = plt.subplots(figsize=(200,200))
 ax.set_aspect('equal')
 ax.set_facecolor('white')
 
-ew = get_edge_widths(G)
 ox.plot_graph(G, edge_color='grey',
-                        node_size=0, edge_linewidth=ew,
+                        node_size=0, edge_linewidth=10,
                         show=False, close=False, ax=ax,)
 water.plot(ax=ax, color="lightblue")
 features.plot(ax=ax, markersize = 5000, color ="darkgreen")
@@ -270,9 +269,8 @@ fig, ax = plt.subplots(figsize=(200,200))
 ax.set_aspect('equal')
 ax.set_facecolor('white')
 
-ew = get_edge_widths(G)
 ox.plot_graph(G, edge_color='grey',
-                        node_size=0, edge_linewidth=ew,
+                        node_size=0, edge_linewidth=10,
                         show=False, close=False, ax=ax,)
 water.plot(ax=ax, color="lightblue")
 resturants_gdf.plot(ax=ax, color ="red", markersize = 5000)
