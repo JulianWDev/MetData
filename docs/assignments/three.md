@@ -108,21 +108,43 @@ This is also the reason why the BBGA comes out so much higher than the airbnb li
 ### How many hotel rooms should be built if Amsterdam wants to accommodate the same number of tourists?
 We create a new list with only airbnbs which have been online for more than 0 nights so minimum 1 day, and then we count how many items are in our list to see how many airbnbs this counts for.
 ```python
-airbnb_more = airbnb_df[airbnb_df['availability_365'] > 0]
-airbnb_available = len(airbnb_more)
-print(airbnb_available)
-# Some numbers show that the average bnb offers around 3 rooms, so we will assume 3 guests to anser this question
-people_airbnb = airbnb_available * 3
-print(people_airbnb)
-# Standard hotel rooms have 2 beds which is the assumption for the next calculaition
-hotel_rooms = people_airbnb/2
+# we create a new list with only airbnbs which have been online for more than 0 nights so minimum 1 day
+# and then we aim to see how many beds these locations have
+airbnb_more_0 = airbnb_df[airbnb_df['availability_365'] > 0]
+print(len(airbnb_more_0))
+
+#we split the name column into its components
+airbnb_more_0[['house', 'rating', 'nr_bedrooms', 'nr_bed', 'bathrooms']] = airbnb_more_0['name'].str.split("·", expand = True)
+
+# we extract the numerical value
+airbnb_more_0['beds'] = airbnb_more_0['nr_bed'].str.extract(r'(\d+(?:\.\d+)?)').astype('float')
+#we create a list of the numericla values
+list_beds = airbnb_more_0['beds']
+
+#we set up out empty variables
+nr_bed_airbnb = 0
+x=0
+
+#we itterate through our list and add it to
+for i in list_beds:
+    try:
+        adding = int(i)
+        nr_bed_airbnb = nr_bed_airbnb + adding
+    except:
+        # allows me to see the number of exceptions
+        x = x+1
+
+#this i number of beds in airbnb
+print(nr_bed_airbnb)
+#standard hotel rooms have 2 beds which is the assumption for the next calculation
+hotel_rooms = nr_bed_airbnb/2
 print(hotel_rooms)
 ```
-`5438,
-16314,
-8157.0`
+`5438
+9413
+4706.5`
 
-From this calculation, we can conclude that, assuming that on average each AirBNB hosts 3 guests, and each hotel hosts 2, we would need to build 8157 extra hotel rooms.
+From this calculation, we can conclude that, currently the Airbnbs in Amsterdam have around 9413 beds, and if we assume that each hotel hosts 2 beds, we would need to build around 4707 extra hotel rooms.
 
 ### How many different licenses are issued?
 If we remove duplicate licenses, the length of the list will be the amount of different licenses.
