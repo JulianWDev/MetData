@@ -148,7 +148,7 @@ ax.scatter(graph_water.nodes[nearest_node[0]]['x'], graph_water.nodes[nearest_no
 
 plt.savefig("publictransport.png")
 ```
-![Alt text](update_stop.png)
+![Alt text](stop_transport.png)
 
 Overall, the capacity of public transport is estimated through data found online. We have 24 bus stops within 750 m (in green), and 3 tram stops (in yellow). Both pass between 5-10 times an hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people who can be moved per hour below.
 
@@ -208,7 +208,7 @@ print(gdf_filtered)
 ```
 ![Alt text](tram_lines_2.png)
 
-Here we can see the route that 14 (purple) and 26 (red) travel past our tram stops (orange.)
+Here we can see how the route that 14 (purple) and 26 (red) travel past our tram stops (orange).
 
 ### What is the centrality of our route? 
 For this assignment, we are using closeness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our street network.
