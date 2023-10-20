@@ -101,7 +101,7 @@ plt.show()
 This seems like a good location. There is good road access and the Entrepotdok offers sufficient space for support boats and structures.
 
 ### Finding closest Bus and Tram stops to the swimming location
-We aim to find the bus and tram locations closest to the traffic route. The circumference considered is 1000m since we consider that somewhat realistic to walk to and from the event. The bus stop locations are taken from osmnx while the tram and metro stops come from Maps Amsterdam published by the Gemeente Amsterdam (Gemeente Amsterdam, 2023).
+We aim to find the bus and tram locations closest to the traffic route. The circumference considered is 750m since we consider that somewhat realistic to walk to and from the event. The bus stop locations are taken from osmnx while the tram and metro stops come from Maps Amsterdam published by the Gemeente Amsterdam (Gemeente Amsterdam, 2023).
 
 ```python
 x_coor = 52.372870
@@ -110,10 +110,13 @@ center_point = (x_coor,y_coor)
 
 tags = {'public_transport':['stop_position']}
 
-features = ox.features.features_from_point(center_point, tags=tags, dist=300)
+public_transport = ox.features.features_from_point(center_point, tags=tags, dist=750)
+bus_stop = public_transport[public_transport['bus'] == "yes"]
+tram_stop = public_transport[public_transport['tram'] == "yes"]
+print(bus_stop)
+print(tram_stop)
 
-features.head()
-features.info()
+public_transport.info()
 
 url_tram = "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=TRAMMETRO_PUNTEN_2022&THEMA=trammetro"
 response_tram = requests.get(url_tram)
@@ -125,7 +128,8 @@ target_point = Point(x_coor, y_coor)
 
 gdf_tram['distance'] = gdf_tram['geometry'].apply(lambda stop: great_circle((x_coor, y_coor), (stop.y, stop.x)).meters)
 
-closest_stops = gdf_tram.nsmallest(5, 'distance')
+closest_stops = gdf_tram[gdf_tram['distance'] < 750]
+
 print(closest_stops)
 ```
 ```python
@@ -133,30 +137,39 @@ fig, ax = plt.subplots(figsize=(200,200))
 ax.set_aspect('equal')
 ax.set_facecolor('white')
 
-ox.plot_graph(G, edge_color='grey',
-                        node_size=0, edge_linewidth=10,
+ox.plot_graph(G, edge_color='grey', edge_linewidth = 10,
+                        node_size=0,
                         show=False, close=False, ax=ax,)
 water.plot(ax=ax, color="lightblue")
-features.plot(ax=ax, markersize = 5000, color ="darkgreen")
+bus_stop.plot(ax=ax, markersize = 5000, color ="darkgreen")
 closest_stops.plot(ax=ax, markersize = 5000, color = "orange")
+swim_route_fig = ox.plot_graph_route(graph_water, swim_route_path, route_linewidth=100, zorder=2, route_color='red', show=False, orig_dest_size=2, bgcolor='white', node_color="lightblue", edge_color="lightblue", bbox=bbox_ams_centre, close=False, ax=ax)
+ax.scatter(graph_water.nodes[nearest_node[0]]['x'], graph_water.nodes[nearest_node[0]]['y'], s=10000, c='red', marker='o', zorder=2)
 
 plt.savefig("publictransport.png")
 ```
-![Alt text](public1.png)
+![Alt text](update_stop.png)
 
-Overall, the capacity of public transport is estimated through data found online. We have 5 bus stops within 1 km, and 5 tram stops. Both pass between 5-10 times an hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people who can be moved per hour below.
+Overall, the capacity of public transport is estimated through data found online. We have 24 bus stops within 750 m, and 3 tram stops. Both pass between 5-10 times an hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people who can be moved per hour below.
 
 ```python
-y=(5*7.5*185)+(5*5*60)
+nr_bus = len(bus_stop)
+print(nr_bus)
+nr_tram = len(closest_stops)
+print(nr_tram)
+y=(nr_tram*7.5*185)+(nr_bus*5*60)
 print(y)
 ```
-8437.5, thus approximatly 8438 people can be transported per hour.
+11362.5 thus approximatly 11363 people can be transported per hour.
 
 ### Where do the bus and tram routes run?
 The bus routes are unable to be identified as osmnx is unable to return the routes to a specific bus id. However, Maps Amsterdam has an overview of all the tram lines. Thus we select the routes which are contained in our list of relevant trams and then graph them with different colours.
 ```python
+# Define the routes (Lijn) you want to select
+selected_routes = ["26", '14']
+
+#create an empty list for the filtered rows
 filtered = []
-selected_routes = ["26", '7', '14', '51', '53', '54']
 
 for ind in gdf_tram.index:
     for p in selected_routes:
@@ -165,12 +178,17 @@ for ind in gdf_tram.index:
         if p in item_str:
             filtered.append(gdf_tram.loc[ind])
 
+#now we take our previous list and set it up again as a dataframe
 gdf_filtered = gpd.GeoDataFrame(filtered, columns= ['Modaliteit', 'Lijn', 'Lijn_select', 'geometry', 'Name', 'dtype'], geometry='geometry')
+print(gdf_filtered)
 
-colour_routes = ["red", 'blue', 'darkgreen', 'purple', 'pink', 'yellow']
-df_colour = pd.DataFrame([colour_routes], columns= ["26", '7', '14', '51', '53', '54'])
+colour_routes = ["red", 'purple',]
+df_colour = pd.DataFrame([colour_routes], columns= ["26", '14'])
+print(df_colour)
 
+#then we again set up an empty list to append to
 colour_items = []
+print(len(gdf_filtered))
 
 for i in range(len(gdf_filtered)):
     for p in selected_routes:
@@ -179,11 +197,17 @@ for i in range(len(gdf_filtered)):
         if p in item_str:
             colour_items.append(df_colour[p][0])
             break
+print(colour_items)
 
+print(len(colour_items))
+
+#here we add colour to our data frame to later use it for visualization
 gdf_filtered["colour"] = colour_items
-```
 
-![Alt text](maps_tram.png)
+print(gdf_filtered)
+```
+![Alt text](tram_lines_2.png)
+
 
 ### What is the centrality of our route? 
 For this assignment, we are using closeness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our street network.
