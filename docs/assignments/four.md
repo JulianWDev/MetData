@@ -150,7 +150,7 @@ plt.savefig("publictransport.png")
 ```
 ![Alt text](stop_transport.png)
 
-Overall, the capacity of public transport is estimated through data found online. We have 24 bus stops within 750 m (in green), and 3 tram stops (in yellow). Both pass between 5-10 times an hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people who can be moved per hour below.
+Overall, the capacity of public transport is estimated through data found online. We have 24 bus stops within 750 m (in green), and 3 tram stops (in yellow). Trams pass between 5-10 times an hour thus allowing us to set up an average of 7.5. Busses pass slightly less around 5 times an hour. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people who can be moved per hour below.
 
 ```python
 nr_bus = len(bus_stop)
