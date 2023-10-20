@@ -150,7 +150,7 @@ plt.savefig("publictransport.png")
 ```
 ![Alt text](update_stop.png)
 
-Overall, the capacity of public transport is estimated through data found online. We have 24 bus stops within 750 m, and 3 tram stops. Both pass between 5-10 times an hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people who can be moved per hour below.
+Overall, the capacity of public transport is estimated through data found online. We have 24 bus stops within 750 m (in green), and 3 tram stops (in yellow). Both pass between 5-10 times an hour thus allowing us to set up an average of 7.5. The capacity of a bus is 30 seats and 30 standing places, while the capacity of a tram is 60 seats and 125 standing spaces (GVB, 2023; Wikipedia-bijdragers, 2022). Thus we have calculated the number of people who can be moved per hour below.
 
 ```python
 nr_bus = len(bus_stop)
@@ -163,7 +163,7 @@ print(y)
 11362.5 thus approximatly 11363 people can be transported per hour.
 
 ### Where do the bus and tram routes run?
-The bus routes are unable to be identified as osmnx is unable to return the routes to a specific bus id. However, Maps Amsterdam has an overview of all the tram lines. Thus we select the routes which are contained in our list of relevant trams and then graph them with different colours.
+The bus routes are unable to be identified as osmnx is unable to return the routes to a specific bus id. However, Maps Amsterdam has an overview of all the tram lines. Thus we select the routes which are contained in our list of relevant trams and then graph them with different colours. The relevant tram lines are taken form the Lijn attribute from previous output.
 ```python
 # Define the routes (Lijn) you want to select
 selected_routes = ["26", '14']
@@ -208,6 +208,7 @@ print(gdf_filtered)
 ```
 ![Alt text](tram_lines_2.png)
 
+Here we can see the route that 14 (purple) and 26 (red) travel past our tram stops (orange.)
 
 ### What is the centrality of our route? 
 For this assignment, we are using closeness centrality. This notion of centrality is computed based on how close other nodes are to it and we computed it based on our street network.
