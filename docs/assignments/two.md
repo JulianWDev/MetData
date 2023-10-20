@@ -56,7 +56,7 @@ ABC boat hire. (n.d.) How much fuel does a narrowboat use? - . ABC Boat Hire | A
 
 AMS. (n.d.). AMS Institute and TU Delft Research: Space to fit 3.250.000 solar panels on Amsterdam rooftops. AMS Institute - AMS Institute and TU Delft research. https://www.ams-institute.org/news/pv-advent-calendar-ams-institute-3250000-solar-panels-amsterdam-rooftops/ 
 
-Boat Fuel Economy. (n.d.). Liters: Mercury - evinrude - yamaha - suzuki - honda - tohatsu - outboard fuel consumption per hour LPH. Liters | Mercury - Evinrude - Yamaha - Suzuki - Honda - Tohatsu - Outboard Fuel Consumption per Hour LPH. https://www.boat-fuel-economy.com/outboard-fuel-consumption-liters 
+Boat Fuel Economy. (n.d.). Liters: Mercury - evinrude - yamaha - suzuki - honda - tohatsu - outboard fuel consumption per hour LPH. Liters, Mercury - Evinrude - Yamaha - Suzuki - Honda - Tohatsu - Outboard Fuel Consumption per Hour LPH. https://www.boat-fuel-economy.com/outboard-fuel-consumption-liters 
 
 Gemeente Amsterdam. (n.d.). Grachtenmonitor 2022. openresearch.amsterdam. https://openresearch.amsterdam/nl/page/92981/grachtenmonitor-2022 
 
@@ -71,7 +71,7 @@ Munatones, S. (2010). IPC Swimming World Championships. World Open Water Swimmin
 Royal Navy. (n.d.). Swimming across the Solent. https://www.royalnavy.mod.uk/khm/portsmouth/using-the-port-for-recreation/swimming-across-the-solent
 
 
-Selzer, M. (2023). How much does a Lithium-Ion battery cost in 2023? Lawn Care Blog | Lawn Love. https://lawnlove.com/blog/lithium-ion-battery-cost/
+Selzer, M. (2023). How much does a Lithium-Ion battery cost in 2023? Lawn Care Blog, Lawn Love. https://lawnlove.com/blog/lithium-ion-battery-cost/
 
 TNO. (2023, May 25). Uitvoeringsagenda Uitstootvrije Mobiliteit - assets.amsterdam.nl. https://assets.amsterdam.nl/publish/pages/863561/tno-rapport_uitvoeringsagenda_uitstootvrije_mobiliteit-pdf2.pdf 
 
